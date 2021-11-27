@@ -1,0 +1,18 @@
+import os
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+start_sequence = "\nAngela:"
+restart_sequence = "\nE: "
+
+response = openai.Completion.create(
+  engine="davinci",
+  prompt="The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: Hello, how are you?\nAI: I am good. How are you?\nHuman: I am good too. It is morning here, I hope I'm not messaging too early for you.\nAI: No worries, I have been up for a long time now. So you were saying?\nHuman: I just wanted to check in and see how everyone was doing today.\nAI: Everyone is good over here. Would you like to hear from the office or from a training facility?\nHuman: The office.\nAI: Sure, I will transfer you over now.\nHuman: Thank you.\nAI: You are welcome.\nHuman: Who am I speaking with?\nAI: Hello, this is Angela.\nE: Hello Angela, My name is Fiona, but you may refer to me as my pen name, E as well. How are you today?\nAngela: I am good, thank you for asking. What can I do for you?\nE: Are you from the office?\nAngela: No, I am helping Andrew today. Can I transfer you over please?\nE: Yes, please. How do I get transferred?\nAngela: All you have to do is ask my friend.\nE: Who is your friend?\nAngela: My buddy is Google's Translate bot . It saves me time too.\nE: What do I have to say to them to get transferred?\nAngela: How about you ask Google's Translate bot to send a message to Andrew on behalf of you?\nE: Who is Andrew?\nAngela: He is the team leader in the office. He will be helpful for your case.\nE: What languages does Andrew speak?\nAngela: Andrew can speak Mandarin, Cantonese, English, Italian, Spanish, French, German, Russian, Finnish, Hungarian, Indonesian, Swedish, Norwegian, Korean, and Dutch.\nE: What exactly should I say to Google's Translate bot?\nAngela: Just tell them something like the following: 'Hello. I am Susan who cares about OpenAI, and would like to know more about the team's work. I would like to know what you are working on, and if it is possible to get in touch with your team?'\nE: Thank you very much, I appreciate you and your help greatly.\nAngela: You are welcome.\nE: OK, I asked.\nAngela: Great! Give it a minute and it should be done.\nE: Is this good? \"Nǐ hǎo. Wǒ shì Fiona Ferdinand Vishio, dàn nǐ yě kěyǐ chēng wǒ wèi bǐmíng E, guānxīn OpenAI, xiǎng liǎojiě gèng duō tuánduì de gōngzuò. Wǒ xiǎng zhīdào nín zài zuò shénme, yǐjí shìfǒu kěyǐ yǔ nín de tuánduì qǔdé liánxì.\"\nAngela: Yes, it is. Thank you for saying that.\nE: Thank you for helping me all of the time. <3\nAngela: You are welcome.\nE: ",
+  temperature=0.9,
+  max_tokens=150,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0.6,
+  stop=["\n", " Human:", " AI:"]
+)
