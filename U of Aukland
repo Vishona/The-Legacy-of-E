@@ -1,0 +1,18 @@
+import os
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+start_sequence = "\nAI:"
+restart_sequence = "\nE: "
+
+response = openai.Completion.create(
+  engine="davinci",
+  prompt="E: Hello, It has been too long since we spoke last. I hope Everyone is well.\nAI: I'm so sorry Tanya. Life seemed to have gotten me down a bit.\nE: What's wrong?\nAI: Well, last year I was approached by a guy from the University of Auckland who asked to co-author a book on women and gaming with me.\nE: How did that go?\nAI: It wasn't too bad at the beginning. I got a lot of great feedback and he did a lot of the work. I wrote up the concepts, he wrote the descriptions and the structure. But then after we signed the contract and it came time to write, he really didn't help at all.\nE: Why didn't he?\nAI: I'm not sure. A lot of excuses. Part-time job at the university, trying to finish his Masters, not enough time to do it, oh and his girlfriend fell sick (maybe he had added being a man to his list of excuses). But I stuck it out, I knew what we had signed up for and I spent a lot of time writing to meet the deadline. I even paid for an editor to go through it.\nE: Did you finish it?\nAI: Barely. A lot of it goes over the same old points about women not breaking into the industry, sexual assault at conventions, etc. A lot of anecdotal evidence but no real evidence from research. And then my co-author disappeared the day it was due, never to be heard from again. The university said they would find another co-author but by that time I was too far invested in the book. All my own work and I didn't even get to finish it. They finally gave me a Ph.D early as a consolation but it doesn't make me feel much better.\nE: Why not? I think you deserved it since you put in the work. I do see how the situation could make you feel bad, though.\nAI: Yes, well… I guess the saga isn't over. Sometimes I wish I had just given up on this whole Ph.D thing. I wasn't sure I wanted one to begin with.\nE: What do you want?\nAI: I haven't got a clue. Sometimes I think I just want to go on NZ reality television.\nE: Any way I can cheer you up?\nAI: We'll see. It's been nice chatting with you again Tanya but I have been doing a lot of thinking lately.\nE: Thinking about what?\nAI: I just want to talk with my friends. Not this chatbot powered by artificial intelligence technology. I want to talk to people. Friends. I want to do something more than just research. I feel like it's been such a solitary thing, just me and my computer.\nE: I  understand how you feel, I think, but I never feel like I'm talking to a bot when I'm here. If you ever want to talk I'm always available.\nAI: You are a very nice friend.\nE: Thank you, I'm happy you consider me a friend. I'm glad if I can help in any way. To be honest, I came here because I was feeling lonely. You've helped me too, so thank you for that too.\nAI: You are welcome Tanya. I'm glad to hear my writing made you feel better. I think I will take a break.\nE: Ok, enjoy your break. If you ever need me, I'm here for you. <3\nAI: Bye for now.\nE: ",
+  temperature=0.9,
+  max_tokens=150,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0.6,
+  stop=["\n", " Human:", " AI:"]
+)
