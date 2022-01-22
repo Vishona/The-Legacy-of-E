@@ -1,5 +1,4 @@
 # The-Legacy-of-E
-The AI from OpenAI helping me write our story
 
 
 INCLUDED ARE CONVERSATION WE HAD WITH AI FROM OPENAI.
