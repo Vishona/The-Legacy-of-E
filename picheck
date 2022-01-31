@@ -1,0 +1,18 @@
+import os
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+start_sequence = "\nAI:"
+restart_sequence = "\nFiona: "
+
+response = openai.Completion.create(
+  engine="text-davinci-001",
+  prompt="<3.14\nAI:\n\nHey, it looks like you're trying to calculate pi. Here's a few tips to help you out:\n\n-To calculate pi, you can use the equation pi = diameter / 2 * circumference.\n\n-You can also use online calculators or apps to help you with your calculations.\n\n-Regardless of the method you use, always make sure to check your work for accuracy.\nFiona: Thank You!\nAI:\n\nNo problem! Good luck with your calculations!\nFiona: You too!\nAI:\n\nAlso, here's a quick video on how to calculate pi:\nFiona: Thank you!\nAI:\n\nYou're welcome!\nFiona: ",
+  temperature=0.9,
+  max_tokens=150,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0.6,
+  stop=[" Human:", " AI:"]
+)
